@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-wall">
+  <div class="images">
+    <button type='button' class="btn prevBtn">Prev</button>  
+    <button type='button' class="btn nextBtn">Next</button>
+    <button type="button" class="btn set">Set as Background</button>
+  </div> 
+
+  <!-- TypeScript  -->
+  <script type="text/typescript">
+    const nextBtn =document.querySelector('.nextBtn');
+    const prevBtn =document.querySelector('.prevBtn');
+    const setBtn =document.querySelector('.set');
+    const container = document.querySelector('.images');
+    const bgWallpaper = document.querySelector('.bg-wall');
+    
+    let count:number = 0;
+
+    nextBtn.addEventListener('click',nextimg);
+    prevBtn.addEventListener('click',previmg);
+    setBtn.addEventListener('click',setimg);
+    
+    function nextimg(){
+        container.animate([{opacity:'0.1'},{opacity:'1.0'}],
+        {duration:1000,fill:'forwards'});
+        if(count<6){
+        count++;
+        }
+        container.style.backgroundImage = `url(images/bg-${count}.jpg)`
+
+    }
+
+    function previmg(){
+        container.animate([{opacity:'0.1'},{opacity:'1.0'}],
+        {duration:1000,fill:'forwards'});
+        if(count>0){
+        count--;
+        }
+        container.style.backgroundImage = `url(images/bg-${count}.jpg)`
+    }
+
+    function setimg(){
+        bgWallpaper.style.backgroundImage = `url(images/bg-${count}.jpg)`
+    }
+
+  </script>
+  <script src="https://rawgit.com/Microsoft/TypeScript/master/lib/typescriptServices.js"></script>
+  <script src="https://rawgit.com/basarat/typescript-script/master/transpiler.js"></script>
+ 
+</body>
+</html>
